@@ -1,0 +1,91 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>Cliente HTTP</title>
+</h:head>
+
+<h:body>
+	<h2>CLIENTE HTTP</h2>
+
+	<p>MASACHE JEFFERSON</p>
+
+	<h:form>
+
+		<h:dataTable value="#{manejadorAlbum.albumList}" var="vari">
+			<h:column>
+				<f:facet name="header">ID ALBUM</f:facet>    				
+                #{vari.id}
+            </h:column>
+			<h:column>
+				<f:facet name="header">TITLE</f:facet>    				
+               #{vari.title}
+            </h:column>
+
+		</h:dataTable>
+	</h:form>
+
+	<h:form>
+		<br />
+		<h:selectOneMenu value="#{manejadorAlbum.idAlbum}">
+			<f:selectItem itemLabel="SELECCIONE ID ALBUM" itemValue="" />
+			<f:selectItems value="#{manejadorAlbum.albumList}" var="vari"
+				itemLabel="#{vari.id}" itemValue="#{vari.id}" />
+		</h:selectOneMenu>
+
+		<br />
+		<div>
+			<h:commandButton value="VER DETALLE ALBUM"
+				action="#{manejadorAlbum.buscarAlbum()}" />
+		</div>
+		<br />
+		<div>
+			<h:outputLabel value="ID ALBUM" />
+			<div>
+				<h:outputText value="#{manejadorAlbum.album.id}" />
+			</div>
+		</div>
+
+		<br />
+		<div>
+			<h:outputLabel value="TITULO" />
+			<div>
+				<h:outputText value="#{manejadorAlbum.album.title}" />
+			</div>
+		</div>
+		<br />
+		<div>
+			<h:outputLabel value="F LANZAMIENTO" />
+			<div>
+				<h:outputText value="#{manejadorAlbum.album.releaseDate}">
+					<f:convertDateTime pattern="yyyy-MM-dd" />
+				</h:outputText>
+
+			</div>
+		</div>
+		<br />
+		<div>
+			<h:outputLabel value="VERSION" />
+			<div>
+				<h:outputText value="#{manejadorAlbum.album.version}" />
+			</div>
+		</div>
+		<br />
+		<div>
+			<h:outputLabel value="ID SINGER" />
+			<div>
+				<h:outputText value="#{manejadorAlbum.album.idSinger}" />
+			</div>
+		</div>
+		<br />
+		<h:link value="ATRÁS" outcome="/faces/hello.xhtml" />
+		<br />
+
+	</h:form>
+</h:body>
+
+</html>

@@ -1,0 +1,86 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>Cliente HTTP</title>
+</h:head>
+
+<h:body>
+	<h2>CLIENTE HTTP</h2>
+
+	<p>MASACHE JEFFERSON</p>
+
+	<h:form>
+
+		<h:dataTable value="#{manejadorSinger.singerList}" var="vari">
+			<h:column>
+				<f:facet name="header">ID</f:facet>    				
+                #{vari.id}
+            </h:column>
+			<h:column>
+				<f:facet name="header">NOMBRE</f:facet>    				
+               #{vari.firstName}
+            </h:column>
+
+		</h:dataTable>
+		<br />
+	</h:form>
+	<h:form>
+		<h:selectOneMenu value="#{manejadorSinger.idSinger}">
+			<f:selectItem itemLabel="SELECCIONE ID SINGER" itemValue="" />
+			<f:selectItems value="#{manejadorSinger.singerList}" var="vari"
+				itemLabel="#{vari.id}" itemValue="#{vari.id}" />
+		</h:selectOneMenu>
+
+		<div>
+			<h:commandButton value="VER DETALLE SINGER"
+				action="#{manejadorSinger.buscarSinger()}" />
+		</div>
+		<br />
+<div>
+			<h:outputLabel value="IS SINGER" />
+			<div>
+				<h:outputText value="#{manejadorSinger.singer.id}" />
+			</div>
+		</div>
+
+		<div>
+			<h:outputLabel value="NOMBRE" />
+			<div>
+				<h:outputText value="#{manejadorSinger.singer.firstName}" />
+			</div>
+		</div>
+		<br />
+		<div>
+			<h:outputLabel value="APELLIDO" />
+			<div>
+				<h:outputText value="#{manejadorSinger.singer.lastName}" />
+			</div>
+		</div>
+		<br />
+		<div>
+			<h:outputLabel value="NACIMIENTO" />
+			<div>
+				<h:outputText value="#{manejadorSinger.singer.birthDate}">
+					<f:convertDateTime pattern="yyyy-MM-dd" />
+				</h:outputText>
+			</div>
+		</div>
+		<br />
+		<div>
+			<h:outputLabel value="VERSION" />
+			<div>
+				<h:outputText value="#{manejadorSinger.singer.version}" />
+			</div>
+		</div>
+		<br />
+		<h:link value = "ATRÁS" outcome = "/faces/hello.xhtml" /><br/>
+		<br />
+	</h:form>
+</h:body>
+
+</html>
